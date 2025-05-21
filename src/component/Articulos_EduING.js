@@ -1,9 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './EducacionPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Assets thumbnail images from Recursos_Educativos/Articulos_Img 
 import BookshelfThumbnail from './assets/BookshelfThumbnail.png';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
+import Terremoto from './Recursos_Educativos/Articulos_Img/terrem_hist.png';
+
 
 // Mock data for articles with translations
 const articlesData = {
@@ -12,7 +15,7 @@ const articlesData = {
       id: 1,
       title: 'What is an Earthquake?',
       description: 'A detailed explanation about the formation and characteristics of earthquakes.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/que_es_un_terremoto/corrientes-conveccion.png',
+      image: 'http://redsismica.uprm.edu/english/education/imgs/earthquakes/convection-currents.png',
       link: 'https://redsismica.uprm.edu/english/education/earthquake_information.php'
     },
     {
@@ -68,7 +71,7 @@ const articlesData = {
       id: 9,
       title: 'Significant Earthquakes in Puerto Rico',
       description: 'Learn more about the 1918 earthquake and other significant earthquakes that have impacted Puerto Rico.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/terremotos/imgs/terremoto_1918.gif',
+      image: Terremoto,
       link: 'https://redsismica.uprm.edu/english/education/earthquakes/index.php'
     },
     {
@@ -76,7 +79,7 @@ const articlesData = {
       title: 'Educational Resources',
       description: 'Here you can see educational materials, brochures, our tsunami curriculum and the PRSN news catalogue.',
       image: BookshelfThumbnail,
-      link: '#/english'
+      link: '#/english/recursos'
     }
   ]
 };
@@ -90,7 +93,7 @@ const ArticulosEduING = () => {
   const [fadeInClass, setFadeInClass] = useState('');
 
   // State for tracking visible articles for fade-in effect
-  const [visibleArticles, setVisibleArticles] = useState([]);
+  const [visibleArticles] = useState([]);
 
   // State for responsive design
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 431);
@@ -130,13 +133,16 @@ const ArticulosEduING = () => {
       { threshold: 0.1 }
     );
 
-    articlesRef.current.forEach((el) => {
+    // Save the current articles refs to use in cleanup
+    const currentArticleRefs = articlesRef.current;
+    
+    currentArticleRefs.forEach((el) => {
       if (el) observer.observe(el);
     });
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      articlesRef.current.forEach((el) => {
+      currentArticleRefs.forEach((el) => {
         if (el) observer.unobserve(el);
       });
     };
@@ -152,12 +158,15 @@ const ArticulosEduING = () => {
               Educational Articles
             </h1>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1rem' }}>
+              <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} onClick={() => window.location.href = '#/english'}>
+                Home
+              </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
                   onClick={() => window.location.href = '#/english/articulos'}>
                 Articles
               </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
-                  onClick={() => window.location.href = '#/english'}>
+                  onClick={() => window.location.href = '#/english/recursos'}>
                 Resources
               </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
@@ -242,5 +251,8 @@ const ArticulosEduING = () => {
     </div>
   );
 };
+
+// Export articlesData so it can be imported by the English homepage component
+export { articlesData };
 
 export default ArticulosEduING; 

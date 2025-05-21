@@ -38,24 +38,38 @@
     padding: 10px 15px;
     position: relative; /* Required for the underline effect */
     overflow: hidden; /* Hide the underline before animation */
-    
   }
   
-  .navbar-nav .nav-link::after,.navbar-nav .nav-link.dropdown-toggle::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 2px; /* Adjust the height of the underline */
-  background-color: #ffffff; /* Light blue underline */
-  transition: width 0.3s ease, left 0.3s ease; /* Smooth transition */
-}
+  /* Fix for dropdown toggle arrows */
+  .navbar-nav .nav-link.dropdown-toggle::after {
+    display: inline-block;
+    margin-left: 0.255em;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+    position: static;
+  }
+  
+  /* Underline effect only for non-dropdown links */
+  .navbar-nav .nav-link:not(.dropdown-toggle)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px; /* Adjust the height of the underline */
+    background-color: #ffffff; /* Light blue underline */
+    transition: width 0.3s ease, left 0.3s ease; /* Smooth transition */
+  }
 
-.navbar-nav .nav-link:hover::after,.navbar-nav .nav-link.dropdown-toggle:hover::after {
-  width: 100%;
-  left: 0;
-}
+  .navbar-nav .nav-link:not(.dropdown-toggle):hover::after {
+    width: 100%;
+    left: 0;
+  }
+  
   .navbar-nav .nav-link:hover {
     color: #FFFFFF !important; /* Keep full white color on hover */
   }
@@ -121,5 +135,80 @@
   
   .nav-item a svg:hover {
     color: #87c8e6; /* Light blue on hover */
+  }
+  
+  /* Small screen adjustments */
+  @media (max-width: 431px) {
+    .navbar-nav {
+      text-align: left !important;
+    }
+    
+    /* Ensure dropdown menus appear properly */
+    .dropdown-menu {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  }
+  
+  /* Add these styles at the end of the file for the manual dropdown functionality */
+  .dropdown-menu.show {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .nav-item.dropdown.show .dropdown-menu {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    z-index: 1000;
+  }
+
+  @media (max-width: 991.98px) {
+    .dropdown-menu {
+      border: none;
+      padding-left: 1.5rem;
+    }
+  }
+  
+  /* Make logo bigger */
+  .navbar-brand img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  /* Social media icons styling */
+  .social-icons {
+    display: flex;
+    align-items: center;
+    margin-left: 15px;
+  }
+  
+  .social-icons .nav-item {
+    margin: 0 5px;
+  }
+  
+  .social-icons .nav-link {
+    padding: 0.5rem 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Media query to adjust social icons on mobile */
+  @media (max-width: 991.98px) {
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+      width: 100%;
+    }
+  }
+  
+  /* Make social icons bigger only on small screens */
+  @media (max-width: 431px) {
+    .social-icons .nav-link {
+      font-size: 1.5rem;
+    }
   }
   

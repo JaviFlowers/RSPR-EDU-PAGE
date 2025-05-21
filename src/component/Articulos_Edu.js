@@ -1,7 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './EducacionPage.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+
+// Assets thumbnail images from Recursos_Educativos/Articulos_Img 
 import BookshelfThumbnail from './assets/BookshelfThumbnail.png';
+import Terremoto from './Recursos_Educativos/Articulos_Img/terrem_hist.png';
+
 
 // Mock data for articles with translations
 const articlesData = {
@@ -66,7 +70,7 @@ const articlesData = {
       id: 9,
       title: 'Terremotos Significativos en Puerto Rico',
       description: 'Conozca mas sobre el terremoto del 1918 y otros terremotos significativos que impactaron a Puerto Rico.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/terremotos/imgs/terremoto_1918.gif',
+      image: Terremoto,
       link: 'https://redsismica.uprm.edu/spanish/educacion/terremotos/index.php'
     },
     {
@@ -74,7 +78,7 @@ const articlesData = {
       title: 'Recursos Educativos',
       description: 'Aquí podrá ver materiales educativos, folletos, nuestro currículo de tsunami y nuestro catálogo de noticias de la RSPR.',
       image: BookshelfThumbnail,
-      link: '#/'
+      link: '#/recursos'
     }
   ]
 };
@@ -88,7 +92,7 @@ const ArticulosEdu = () => {
   const [fadeInClass, setFadeInClass] = useState('');
 
   // State for tracking visible articles for fade-in effect
-  const [visibleArticles, setVisibleArticles] = useState([]);
+  const [visibleArticles] = useState([]);
 
   // State for responsive design
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 431);
@@ -128,13 +132,16 @@ const ArticulosEdu = () => {
       { threshold: 0.1 }
     );
 
-    articlesRef.current.forEach((el) => {
+    // Save the current articles refs to use in cleanup
+    const currentArticleRefs = articlesRef.current;
+    
+    currentArticleRefs.forEach((el) => {
       if (el) observer.observe(el);
     });
 
     return () => {
       window.removeEventListener('resize', handleResize);
-      articlesRef.current.forEach((el) => {
+      currentArticleRefs.forEach((el) => {
         if (el) observer.unobserve(el);
       });
     };
@@ -150,12 +157,15 @@ const ArticulosEdu = () => {
               Artículos Educativos
             </h1>
             <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1rem' }}>
+              <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} onClick={() => window.location.href = '#/'}>
+                Inicio
+              </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
                   onClick={() => window.location.href = '#/articulos'}>
                 Artículos
               </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
-                  onClick={() => window.location.href = '#/'}>
+                  onClick={() => window.location.href = '#/recursos'}>
                 Recursos
               </h1>
               <h1 className="nav-option" style={{ fontSize: "1.2rem", color: "white" }} 
@@ -241,4 +251,7 @@ const ArticulosEdu = () => {
   );
 };
 
-export default ArticulosEdu; 
+export default ArticulosEdu;
+
+// Export articlesData so it can be imported by the homepage component
+export { articlesData }; 

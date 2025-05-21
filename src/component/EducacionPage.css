@@ -16,17 +16,22 @@
     animation: fadeIn 1s ease-in-out;
     opacity: 1;
   }
+
   
   /* Main container */
   .main-container {
     width: 100%; /* Ensures it spans the full width */
     margin: 0; /* Remove default margin */
     background-image: url('./Select_Background.jpeg');
-    background-size: contain;
+    background-size: cover;
     background-color: rgba(255, 255, 255, 0.16);; /* Retain the background color */
     background-blend-mode: overlay;
   }
   
+  .homepage-container {
+    width: 100%; /* Ensures it spans the full width */
+    margin: 0; /* Remove default margin */
+  }
   
   
   /* Top section with logo and text */
@@ -101,12 +106,13 @@
   .bookshelf-title-container-Tsunami {
     position: relative; /* Ensures the background stays behind the title */
     text-align: center; /* Center-align the title */
-    margin-bottom: 20px; /* Add spacing between title and bookshelf */
+    margin-bottom: 15px; /* Add spacing between title and bookshelf */
   }
   
+ 
   .bookshelf-title-container-Tsunami::before {
     content: ''; /* Empty pseudo-element for the background image */
-    background-image:  url('./ola.png'); /* Path to your PNG/SVG image */
+    background-image: url('./ola.png'); /* Path to your PNG/SVG image */
     background-size: contain; /* Ensure the background scales properly */
     background-repeat: no-repeat;
     background-position: center;
@@ -117,15 +123,16 @@
     width: 42%; /* Full width */
     height: 120px; /* Adjust the height based on your image */
     z-index: -1; /* Places the background behind the title */
-    opacity:2;
+    opacity: 2;
   }
   
   .bookshelf-title-container-Terremoto {
     position: relative; /* Ensures the background stays behind the title */
     text-align: center; /* Center-align the title */
-    margin-bottom: 20px; /* Add spacing between title and bookshelf */
+    margin-bottom: 15px; /* Add spacing between title and bookshelf */
   }
   
+ 
   .bookshelf-title-container-Terremoto::before {
     content: ''; /* Empty pseudo-element for the background image */
     background-image: url('./terrem.png'); /* Path to your PNG/SVG image */
@@ -139,7 +146,7 @@
     width: 35%; /* Full width */
     height: 120px; /* Adjust the height based on your image */
     z-index: -1; /* Places the background behind the title */
-    opacity:2;
+    opacity: 2;
   }
   
   .bookshelf-title {
@@ -213,6 +220,7 @@
   }
   
   .card-img-top {
+    width: 100%;
     height: 180px;
     object-fit: cover; /* Ensures the image fills the card without distortion */
   }
@@ -287,6 +295,28 @@
     text-decoration: underline;
   }
     
+  /* Read more link style */
+  .read-more-link {
+    color: #007bff;
+    font-size: 0.875rem;
+    font-weight: 650;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+  }
+  
+  .read-more-link:hover {
+    text-decoration: underline;
+    color: #0056b3;
+  }
+  
+  /* Card hover effect */
+  .card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
   
   .text-primary {
     font-weight: bold;
@@ -425,7 +455,7 @@
     
     /* Styling for the book cover images */
     .book-cover {
-      width: 100%;
+      width: auto;
       height: 100%;
       object-fit: contain;
       display: block;
@@ -440,6 +470,8 @@
       color: #ffff;
       font-family: Georgia, 'Times New Roman', Times, serif;
       padding: 20px;
+      padding-left: 0px;
+      padding-right: 0px;
       border-radius: 8px;
       max-width: 100%;
       margin: auto;
@@ -805,6 +837,37 @@
     .pdf-right-arrow {
       right: -50px;
     }
+    .pdf-nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      padding: 0 10px;
+    }
+  
+    .pdf-nav-buttons button {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 8px 12px;
+      margin: 10px;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+  
+    .pdf-nav-buttons button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  
+    .page-indicator {
+        text-align: center;
+        margin: 12px auto;
+        font-size: 1rem;
+        color: #333;
+    }
+    
   
     .zoom-controls button {
           display: none;
@@ -985,4 +1048,10 @@
 .nav-option:hover::after {
   width: 100%;
   left: 0;
+}
+
+/* Disable individual book hover scaling on the Homepage */
+.homepage-container .book:hover {
+  transform: none !important;
+  box-shadow: none !important;
 }
