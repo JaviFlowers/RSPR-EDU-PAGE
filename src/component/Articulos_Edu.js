@@ -5,7 +5,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Assets thumbnail images from Recursos_Educativos/Articulos_Img 
 import BookshelfThumbnail from './assets/BookshelfThumbnail.png';
 import Terremoto from './Recursos_Educativos/Articulos_Img/terrem_hist.png';
-
+import CorrientesConveccion from './Recursos_Educativos/Articulos_Img/corrientes-conveccion.png';
+import Hipocentro from './Recursos_Educativos/Articulos_Img/hipocentro.png';
+import ACS from './Recursos_Educativos/Articulos_Img/pic9.jpg';
+import TrianguloVida from './Recursos_Educativos/Articulos_Img/pic14.gif';
 
 // Mock data for articles with translations
 const articlesData = {
@@ -14,14 +17,14 @@ const articlesData = {
       id: 1,
       title: '¿Qué es un Terremoto?',
       description: 'Una explicación detallada sobre la formación y características de los tsunamis.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/que_es_un_terremoto/corrientes-conveccion.png',
+      image: CorrientesConveccion,
       link: 'https://redsismica.uprm.edu/spanish/educacion/informacion_terremotos.php'
     },
     {
       id: 2,
       title: 'Preparación ante Terremotos',
       description: 'Guía completa sobre cómo prepararse y actuar durante un terremoto.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/preparacion/imgs/pic9.jpg',
+      image: ACS,
       link: 'https://redsismica.uprm.edu/spanish/educacion/preparacion/index.php'
     },
     {
@@ -49,7 +52,7 @@ const articlesData = {
       id: 6,
       title: 'Glosario de Términos Sísmicos',
       description: 'Cómo crear y mantener un plan familiar para emergencias.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/que_es_un_terremoto/hipocentro.png',
+      image: Hipocentro,
       link: 'https://redsismica.uprm.edu/spanish/educacion/glosario.php'
     },
     {
@@ -63,7 +66,7 @@ const articlesData = {
       id: 8,
       title: 'Triangulo de la Vida',
       description: 'Conozca sobre esta teoría y porqué recomendamos Agacharse, Cubrirse y Sujetarse como el metodo principal de protección.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/pic14.gif',
+      image: TrianguloVida,
       link: 'https://redsismica.uprm.edu/spanish/educacion/triangulo_vida.php'
     },
     {

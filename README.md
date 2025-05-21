@@ -11,6 +11,8 @@ src/
 │   ├── BookshelfPdf_ING.js     # English version of the bookshelf
 │   ├── Articulos_Edu.js        # Spanish articles page
 │   ├── Articulos_EduING.js     # English articles page
+│   ├── Homepage.js             # Spanish homepage 
+│   ├── Homepage_ING.js         # English homepage
 │   ├── React-Header.js         # Spanish header
 │   ├── React-Header_ING.js     # English header
 │   └── EducacionPage.css       # Main stylesheet
@@ -249,6 +251,73 @@ Use existing classes from `EducacionPage.css`:
 - Use the same component structure
 - Keep IDs and data structures identical
 - Ensure all features work in both languages
+
+## Modifying the Homepage
+
+### 1. Updating Content
+To update content on the homepage:
+
+```javascript
+// In Homepage.js or Homepage_ING.js
+const featuredArticles = [
+  {
+    id: 1,
+    title: 'Your New Article',
+    description: 'Description of the article',
+    image: 'path/to/image.jpg',
+    link: '/path-to-article'
+  }
+  // Add more articles as needed
+];
+```
+
+### 2. Adding New Sections
+To add a new section to the homepage:
+
+```javascript
+// In Homepage.js or Homepage_ING.js
+<div className="new-section py-5">
+  <div className="container">
+    <div className="row justify-content-center">
+      <div className="col-12 text-center">
+        <h2 className="section-title">New Section Title</h2>
+        <div className="divider mx-auto my-3"></div>
+      </div>
+      
+      {/* Add your section content here */}
+      <div className="col-md-4">
+        {/* Content items */}
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+### 3. Styling Homepage Elements
+Add custom styling for homepage elements in EducacionPage.css:
+
+```css
+/* In EducacionPage.css */
+.hero-banner {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('path/to/background.jpg');
+  background-size: cover;
+  min-height: 500px;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-card {
+  transition: transform 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.featured-card:hover {
+  transform: translateY(-5px);
+}
+```
 
 ## Best Practices
 
