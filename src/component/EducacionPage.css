@@ -95,7 +95,7 @@
   .main-container {
     width: 100%; /* Ensures it spans the full width */
     margin: 0; /* Remove default margin */
-    background-image: url('./Select_Background.jpeg');
+    background-image: url('./assets/Select_Background.jpeg');
     background-size: cover;
     background-color: rgba(255, 255, 255, 0.16);; /* Retain the background color */
     background-blend-mode: overlay;
@@ -185,7 +185,7 @@
  
   .bookshelf-title-container-Tsunami::before {
     content: ''; /* Empty pseudo-element for the background image */
-    background-image: url('./ola.png'); /* Path to your PNG/SVG image */
+    background-image: url('./Recursos_Educativos/ola.png'); /* Path to your PNG/SVG image */
     background-size: contain; /* Ensure the background scales properly */
     background-repeat: no-repeat;
     background-position: center;
@@ -208,7 +208,7 @@
  
   .bookshelf-title-container-Terremoto::before {
     content: ''; /* Empty pseudo-element for the background image */
-    background-image: url('./terrem.png'); /* Path to your PNG/SVG image */
+    background-image: url('./Recursos_Educativos/terrem.png'); /* Path to your PNG/SVG image */
     background-size: contain; /* Ensure the background scales properly */
     background-repeat: no-repeat;
     background-position: center;

@@ -11,10 +11,10 @@ import { useLocation, Link } from 'react-router-dom';
 import BioLinkAudio from './Recursos_Educativos/Audio_BiolinkESP.mp3';
 
 //Covers Tsunami
-import k6Png from './K-6-GuiaMaestros.png';
-import C712Png from './7-12.png';
+import k6Png from './Recursos_Educativos/K-6-GuiaMaestros.png';
+import C712Png from './Recursos_Educativos/7-12.png';
 import MaritimaCover from './Recursos_Educativos/MaritimaCover.png'
-import Horizontal from './Horizontal.png'
+import Horizontal from './Recursos_Educativos/Horizontal.png'
 import OperadoresCover from './Recursos_Educativos/OperadoresCovers.png'
 import DesarolloPlanCover from './Recursos_Educativos/DesarolloPlanCover.png'
 import Seguridad from './Recursos_Educativos/ReglasTsunamis.png'
@@ -25,9 +25,9 @@ import BrochureTsunamiCover from './Recursos_Educativos/BrochureTsunamiEsp.png'
 //Covers Terremotos
 
 import TurrisT from './Recursos_Educativos/Turr_Terr.png'
-import Caricatura from './CaricaturaT.png'
-import Mascotas from './MascotasT.png'
-import Mochila from './MochilaT.png'
+import Caricatura from './Recursos_Educativos/CaricaturaT.png'
+import Mascotas from './Recursos_Educativos/MascotasT.png'
+import Mochila from './Recursos_Educativos/MochilaT.png'
 import BrochureTerremotosCover from './Recursos_Educativos/Brochure_Terremotos_Esp.png'
 import Tercera from './Recursos_Educativos/Elderly.png'
 import BioLinkCover from './Recursos_Educativos/BioLink_ESPA.png';
@@ -36,9 +36,9 @@ import LandslideCover from './Recursos_Educativos/LandslideCover.png';
 
 
 // Import your video thumbnails
-import videoThumb1 from './CaribeWave25.avif';
-import videoThumb2 from './TsunamiAware.avif';
-import videoThumb3 from './ShakeOut_2023.avif';
+import videoThumb1 from './Recursos_Educativos/CaribeWave25.avif';
+import videoThumb2 from './Recursos_Educativos/TsunamiAware.avif';
+import videoThumb3 from './Recursos_Educativos/ShakeOut_2023.avif';
 
 //Data to be replace with ../spanish/educacion/documentos/Curriculos/(*pdf name*)
 // TsunamiPdf

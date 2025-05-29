@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaFacebook, FaYoutube, FaInstagram, FaRss } from 'react-icons/fa';
-import logo from './RSPR_Logo.png';
+import logo from './Recursos_Educativos/RSPR_Logo.png';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './React-Header.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';

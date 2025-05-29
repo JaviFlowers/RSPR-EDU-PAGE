@@ -9,7 +9,7 @@ import WelcomeBackground from './assets/falla_geologica1.jpg';
 import WelcomeBackground2 from './assets/falla_geologica2.jpg';
 import WelcomeBackground3 from './assets/falla_geologica3.jpg';
 import WelcomeBackground4 from './assets/Fault_geology.jpg';
-import SelectBackground from './Select_Background.jpeg';
+import SelectBackground from './assets/Select_Background.jpeg';
 import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
 import { Parallax } from 'react-parallax';
 
