@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import './EducacionPage.css';
 import { articlesData } from './Articulos_EduING';
 import { videoData, TsunamiBooks, TerremotoBooks } from './BookshelfPdf_ING';
-import WelcomeBackground from './assets/Welcome_Background.jpg';
+import WelcomeBackground from './assets/falla_geologica1.jpg';
+import WelcomeBackground2 from './assets/falla_geologica2.jpg';
+import WelcomeBackground3 from './assets/falla_geologica3.jpg';
+import WelcomeBackground4 from './assets/Fault_geology.jpg';
 import SelectBackground from './Select_Background.jpeg';
 import { FaFacebook, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { Parallax } from 'react-parallax';
 
 const HomepageING = () => {
    // State for fade-in animation effect
@@ -23,6 +27,15 @@ const HomepageING = () => {
    const articlesRef = useRef([]);
 
    const [hoveredBook, setHoveredBook] = useState(null);
+   
+   // Add slideshow state
+   const backgroundImages = [WelcomeBackground, WelcomeBackground2, WelcomeBackground3, WelcomeBackground4];
+   const [currentBgIndex, setCurrentBgIndex] = useState(0);
+   const [isFading, setIsFading] = useState(false);
+   
+   // Add refs for welcome section elements
+   const welcomeSubtitleRef = useRef(null);
+   const welcomeNavOptionsRef = useRef(null);
    
    // Add a ref for video thumbnails
    const videoThumbnailsRef = useRef([]);
@@ -45,6 +58,24 @@ const HomepageING = () => {
      };
  
      window.addEventListener('resize', handleResize);
+
+     // Welcome section scroll observer
+     const welcomeObserver = new IntersectionObserver(
+       entries => {
+         entries.forEach(entry => {
+           if (entry.isIntersecting) {
+             entry.target.classList.add('visible');
+           } else {
+             // Keep elements visible once they've appeared
+             // entry.target.classList.remove('visible');
+           }
+         });
+       },
+       { threshold: 0.1, rootMargin: '-100px 0px' }
+     );
+
+     if (welcomeSubtitleRef.current) welcomeObserver.observe(welcomeSubtitleRef.current);
+     if (welcomeNavOptionsRef.current) welcomeObserver.observe(welcomeNavOptionsRef.current);
  
      // Set up intersection observer for fade-in effect for articles
      const articlesObserver = new IntersectionObserver(
@@ -94,9 +125,22 @@ const HomepageING = () => {
      currentVideoRefs.forEach((el) => {
        if (el) videoObserver.observe(el);
      });
+
+     // Background image slideshow with smooth transitions
+     const slideshowTimer = setInterval(() => {
+       setIsFading(true);
+       setTimeout(() => {
+         setCurrentBgIndex(prevIndex => (prevIndex + 1) % backgroundImages.length);
+         setIsFading(false);
+       }, 1000); // Wait for fade out to complete
+     }, 10000); // Change image every 10 seconds
  
      return () => {
        window.removeEventListener('resize', handleResize);
+       
+       if (welcomeSubtitleRef.current) welcomeObserver.unobserve(welcomeSubtitleRef.current);
+       if (welcomeNavOptionsRef.current) welcomeObserver.unobserve(welcomeNavOptionsRef.current);
+       
        currentArticleRefs.forEach((el) => {
          if (el) articlesObserver.unobserve(el);
        });
@@ -105,54 +149,133 @@ const HomepageING = () => {
        currentVideoRefs.forEach((el) => {
          if (el) videoObserver.unobserve(el);
        });
+       
+       // Clean up slideshow timer
+       clearInterval(slideshowTimer);
      };
    }, []);
 
   return (
     <div className={`homepage-container ${fadeInClass}`}>
-      {/* Welcome Section */}
-      <div className="welcome-section" style={{
-        backgroundImage: `url(${WelcomeBackground})`, 
-        backgroundSize: 'cover', 
-        marginTop: '80px', 
+      {/* Welcome Section with Parallax Slideshow */}
+      <div style={{ 
+        position: 'relative', 
         height: isSmallScreen ? '870px' : '700px', 
-        display: 'flex', 
-        flexDirection: 'column', 
-        justifyContent: 'center', 
-        alignItems: 'center' 
-        }}>
-        <h1 style={{ color: 'white', fontSize: isSmallScreen ? '2.5rem' : '3rem', textAlign: 'center', marginBottom: '2rem' }}>
-          Welcome to the Educational Portal<br/>
-          of the<br/>
-          Puerto Rico Seismic Network
-        </h1>
-        {/* Subtitle */}
-        <h2 style={{ color: 'white', fontSize: '1.7rem', textAlign: 'center', margin: '1.5rem' }}>
-          Explore our Educational Resources
-        </h2>
-        {/* Submenu: Articles / Resources / Videos */}
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginTop: '1.5rem' }}>
-          <h1
-            className="nav-option"
-            style={{ fontSize: '1.7em', color: 'white' }}
-            onClick={() => document.getElementById('articles-section').scrollIntoView({ behavior: 'smooth' })}
-          >
-            Articles
+        marginTop: '80px', 
+        overflow: 'hidden',
+        backgroundColor: '#000000', // Black background for the container
+      }}>
+        {/* Permanent dark overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.7)', // Dark overlay
+          zIndex: 2, // Above images, below content
+        }} />
+        
+        {backgroundImages.map((bgImage, index) => (
+          <Parallax
+            key={index}
+            bgImage={bgImage}
+            strength={500}
+            style={{
+              height: '100%',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              opacity: currentBgIndex === index ? (isFading ? 0.3 : 0.7) : 0, // Fade to semi-transparent instead of fully transparent
+              transition: 'opacity 1s ease-in-out',
+              zIndex: 1, // All images at same level
+            }}
+            bgImageStyle={{
+              filter: 'brightness(1.5)', // Brighter image
+              height: '100%',
+              width: '100%',
+              objectFit: 'cover',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
+        ))}
+        
+        {/* Content layer - always visible regardless of which background is showing */}
+        <div className="welcome-section" 
+          style={{
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'flex-start', // Left align for English version to match Spanish
+            position: 'relative',
+            paddingLeft: '10%',
+            paddingRight: '10%',
+            zIndex: 3, // Content above all images and overlay
+          }}
+        >
+          <h1 style={{ 
+            color: 'white', 
+            fontSize: isSmallScreen ? '2.5rem' : '3rem', 
+            textAlign: 'left', // Left align text
+            marginBottom: '2rem',
+            fontWeight: 'bold'
+          }}>
+            <span className="draw-in-text">Welcome to the Educational Portal</span><br/>
+            <span className="draw-in-text" style={{ animationDelay: '0.5s' }}>of the</span><br/>
+            <span className="draw-in-text" style={{ animationDelay: '1s' }}>Puerto Rico Seismic Network</span>
           </h1>
-          <h1
-            className="nav-option"
-            style={{ fontSize: '1.7em', color: 'white' }}
-            onClick={() => document.getElementById('resources-section').scrollIntoView({ behavior: 'smooth' })}
+
+          <h2 
+            ref={welcomeSubtitleRef}
+            className="reveal-element" 
+            style={{ 
+              color: 'white', 
+              fontSize: '1.7rem', 
+              textAlign: 'left', // Left align text
+              marginTop: '1rem',
+              marginBottom: '1.5rem',
+              transitionDelay: '0.3s'
+            }}
           >
-            Resources
-          </h1>
-          <h1
-            className="nav-option"
-            style={{ fontSize: '1.7em', color: 'white' }}
-            onClick={() => document.getElementById('videos-section').scrollIntoView({ behavior: 'smooth' })}
+            Explore our Educational Resources
+          </h2>
+          
+          <div 
+            ref={welcomeNavOptionsRef}
+            className="reveal-element"
+            style={{ 
+              display: 'flex', 
+              justifyContent: 'flex-start', // Left align navigation options
+              gap: '2rem', 
+              marginTop: '1.5rem',
+              transitionDelay: '0.6s'
+            }}
           >
-            Videos
-          </h1>
+            <h1
+              className="nav-option"
+              style={{ fontSize: '1.7em', color: 'white' }}
+              onClick={() => document.getElementById('articles-section').scrollIntoView({ behavior: 'smooth' })}
+            >
+              Articles
+            </h1>
+            <h1
+              className="nav-option"
+              style={{ fontSize: '1.7em', color: 'white' }}
+              onClick={() => document.getElementById('resources-section').scrollIntoView({ behavior: 'smooth' })}
+            >
+              Resources
+            </h1>
+            <h1
+              className="nav-option"
+              style={{ fontSize: '1.7em', color: 'white' }}
+              onClick={() => document.getElementById('videos-section').scrollIntoView({ behavior: 'smooth' })}
+            >
+              Videos
+            </h1>
+          </div>
         </div>
       </div>
 
@@ -248,7 +371,7 @@ const HomepageING = () => {
              <div
              key={book.id}
              className="book"
-             title={book.title} // Add title for accessibility
+             title={book.title}
            >
              <img
                src={book.cover}
@@ -278,7 +401,7 @@ const HomepageING = () => {
              <div
              key={book.id}
              className="book"
-             title={book.title} // Add title for accessibility
+             title={book.title}
            >
              <img
                src={book.cover}

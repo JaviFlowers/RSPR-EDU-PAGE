@@ -5,6 +5,7 @@ import Header from './component/React-Header';
 import HeaderING from './component/React-Header_ING';
 import ArticulosEdu from './component/Articulos_Edu';
 import ArticulosEduING from './component/Articulos_EduING';
+import SecondaryEffects from './component/SecondaryEffects';
 import { pdfjs } from 'react-pdf';
 import { HashRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Homepage from './component/Homepage';
@@ -63,6 +64,16 @@ function App() {
               <>
                 <Header/>
                 <ArticulosEdu/>
+              </>
+            }
+          />
+          
+          <Route
+            path="/efectos-secundarios"
+            element={
+              <>
+              <Header/>
+              <SecondaryEffects />
               </>
             }
           />

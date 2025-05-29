@@ -36,18 +36,19 @@ const articlesData = {
     },
     {
       id: 4,
+      title: 'Efectos de los Terremotos',
+      description: 'Recomendaciones para la seguridad estructural en edificios.',
+      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/deslizamiento.jpg',
+      link: '#/efectos-secundarios'
+    },
+    {
+      id: 5,
       title: 'Tamaño de los Terremotos',
       description: 'Un recorrido por los terremotos más significativos en la historia de Puerto Rico.',
       image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/energy.gif',
       link: 'https://redsismica.uprm.edu/spanish/educacion/tamano.php'
     },
-    {
-      id: 5,
-      title: 'Efectos Secundarios de los Terremotos',
-      description: 'Recomendaciones para la seguridad estructural en edificios.',
-      image: 'https://redsismica.uprm.edu/spanish/educacion/imgs/deslizamiento.jpg',
-      link: 'https://redsismica.uprm.edu/spanish/educacion/efectos_secundarios.php'
-    },
+    
     {
       id: 6,
       title: 'Glosario de Términos Sísmicos',

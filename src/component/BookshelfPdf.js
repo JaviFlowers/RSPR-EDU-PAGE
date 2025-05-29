@@ -37,6 +37,11 @@ import Tercera from './Recursos_Educativos/Elderly.png'
 import Necesidades from './NecesidadET.png'
 import BioLinkCover from './Recursos_Educativos/BioLink_ESPA.png';
 import LibritoCover from './Recursos_Educativos/LibritoEsp.png';
+import ToriCover from './Recursos_Educativos/ToriCover.png';
+import BRMochilaCover from './Recursos_Educativos/BrMochilaCover.png';
+import RemaCover from './Recursos_Educativos/RemaCover.png';
+import DerrumbeCover from './Recursos_Educativos/DerrumbeCover.png';
+
 
 
 
@@ -63,6 +68,10 @@ import BrochureTerremotos from './Recursos_Educativos/Brochure_Terremotos.pdf';
 import Librito from './Recursos_Educativos/Librito_español.pdf';
 import turs_terrem from './Recursos_Educativos/tur_terremESPA.pdf';
 import MascotasPdf from './Recursos_Educativos/MascotasTerremotos.pdf';
+import ToriTeo from './Recursos_Educativos/Tori_Teo_Espanol.pdf';
+import GuiaDer from './Recursos_Educativos/GuiaDerrumbe_2020.pdf';
+import PezRema from './Recursos_Educativos/Librito_de_Pez_Rema.pdf';
+import Brochure_Mochila from './Recursos_Educativos/Brochure_Mochila.pdf';
 //Data has to link to ../spanish/educacion/documentos/Curriculos/(*pdf name*)
 
 
@@ -94,6 +103,10 @@ const TsunamiBooks = [
     { id: 7, title: 'Preparación Para Personas de la Tercera Edad y Personas con Discapacidad', cover: Tercera, content: Envejecientes, description: ''  },
     { id: 8, title: 'BioLink', cover: BioLinkCover, content: BioLink, description: '' ,audio: BioLinkAudioESP},
     { id: 9, title: 'Caricaturas Sobre Alertas de Tsunami', cover: Caricatura, content:  'https://redsismica.uprm.edu/spanish/educacion/documentos/docs/TsunamiWarningCartoons%20español.pdf', description: ''  },
+    { id: 10, title: 'Guía de Derrumbe', cover: DerrumbeCover, content:  GuiaDer, description: ''  },
+    { id: 11, title: 'Tori y Teo', cover: ToriCover, content:  ToriTeo, description: ''  },
+    { id: 12, title: 'Librito de Peces Réma', cover: RemaCover, content:  PezRema, description: ''  },
+    { id: 13, title: 'Brochure de la Mochila de Seguridad', cover: BRMochilaCover, content:  Brochure_Mochila, description: ''  },
     // Add more book objects here 
   ];
 

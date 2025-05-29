@@ -1,11 +1,34 @@
 /* Science Learning Hub style formatting */
-.container h5,
-.container h6 {
+.articulo-main-container {
+  width: 100%;
+  margin: 0;
+  background-color: transparent;
+}
+
+.tittle-container {
+  background-color: transparent;
+  box-shadow: none;
+  
+  border-radius: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top: 30px;
+}
+.articulo-container {
+  background-color: transparent;
+  box-shadow: none;
+  margin-bottom: 40px;
+  border-radius: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.articulo-container h5,
+.articulo-container h6 {
   color: #003366;
   font-weight: 600;
 }
 
-.container h1 {
+.articulo-container h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
@@ -17,109 +40,113 @@
   padding-bottom: 0.5rem;
 }
 
-.container p {
+.articulo-container p {
   font-size: 1.05rem;
   line-height: 1.6;
   color: #333;
   margin-bottom: 1.2rem;
 }
 
-.container ul, 
-.container ol {
+.articulo-container ul, 
+.articulo-container ol {
   padding-left: 2rem;
   margin-bottom: 1.5rem;
 }
 
-.container li {
+.articulo-container li {
   margin-bottom: 0.5rem;
   line-height: 1.5;
 }
 
-.container .card {
+.articulo-container .card {
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
 
-.container .card:hover {
+.articulo-container .card:hover {
   transform: translateY(-5px);
 }
 
-.container .card-img-top {
+.articulo-container .card-img-top {
   height: 180px;
   object-fit: cover;
 }
 
-.container .card-body {
+.articulo-container .card-body {
   padding: 1.25rem;
 }
 
-.container .card-title {
+.articulo-container .card-title {
   font-weight: 600;
   color: #003366;
 }
 
-.container .breadcrumb {
+.articulo-container .card-text-small {
+  font-size: 0.5rem;
+}
+
+.articulo-container .breadcrumb {
   background-color: transparent;
   padding: 0.75rem 0;
 }
 
-.container .breadcrumb-item a {
+.articulo-container .breadcrumb-item a {
   color: #0066cc;
   text-decoration: none;
 }
 
-.container .breadcrumb-item a:hover {
+.articulo-container .breadcrumb-item a:hover {
   text-decoration: underline;
 }
 
-.container .breadcrumb-item.active {
+.articulo-container .breadcrumb-item.active {
   color: #495057;
 }
 
-.container .list-group-item {
+.articulo-container .list-group-item {
   border-left: none;
   border-right: none;
   border-radius: 0;
   transition: background-color 0.2s ease;
 }
 
-.container .list-group-item:first-child {
+.articulo-container .list-group-item:first-child {
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
 }
 
-.container .list-group-item:last-child {
+.articulo-container .list-group-item:last-child {
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
 
-.container .list-group-item:hover {
+.articulo-container .list-group-item:hover {
   background-color: #f8f9fa;
 }
 
-.container .lead {
+.articulo-container .lead {
   font-size: 1.25rem;
   font-weight: 300;
   line-height: 1.5;
   color: #495057;
 }
 
-.container .btn-primary {
+.articulo-container .btn-primary {
   background-color: #003366;
   border-color: #003366;
   transition: all 0.3s ease;
 }
 
-.container .btn-primary:hover {
+.articulo-container .btn-primary:hover {
   background-color: #004080;
   border-color: #004080;
 }
 
 /* Swiper styling - replacing Bootstrap carousel styling */
 .carousel-container {
-  margin: 2rem auto 5rem;
+  margin: 2rem auto 0rem;
   max-width: 800px;
   position: relative;
   padding: 20px 0;
@@ -308,10 +335,6 @@
 }
 
 .carousel-section {
-  background-color: #f7f9fc;
-  background-image: linear-gradient(to right, rgba(0, 51, 102, 0.03) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(0, 51, 102, 0.03) 1px, transparent 1px);
-  background-size: 20px 20px;
   padding: 2rem 0;
   border-radius: 8px;
   margin-bottom: 3rem;

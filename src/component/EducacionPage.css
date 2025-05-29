@@ -17,6 +17,79 @@
     opacity: 1;
   }
 
+  /* Slideshow animation */
+  @keyframes slideshow-fade {
+    0%, 100% {
+      opacity: 0;
+    }
+    10%, 90% {
+      opacity: 1;
+    }
+  }
+
+  .slideshow-image {
+    animation: slideshow-fade 5s infinite;
+    transition: opacity 1s ease-in-out;
+  }
+
+  /* Text draw-in animation */
+  @keyframes drawIn {
+    0% {
+      width: 0;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  .draw-in-text {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .draw-in-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    animation: drawIn 1.5s forwards;
+    animation-delay: inherit;
+  }
+
+  .draw-in-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: white;
+    animation: drawIn 1.5s forwards;
+    animation-delay: inherit;
+  }
+
+  /* Reveal on scroll animations */
+  .reveal-element {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .reveal-element.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Parallax container */
+  .parallax-container {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
   
   /* Main container */
   .main-container {
@@ -567,34 +640,121 @@
   .pdf-nav-arrow {
     position: absolute;
     top: 50%;
-    background: black;
-    transform: translateY(-50%);
-    border: none;
-    color: #fff;  /* For contrast on the modal background */
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, color 0.3s ease;
-    z-index: 20;
+    background: transparent !important;
+    color: #003366 !important;
+    font-size: 3rem !important;
+    border: none !important;
+    text-shadow: 0px 0px 3px rgba(255, 255, 255, 0.8) !important;
+    opacity: 0.7 !important;
+    transition: all 0.3s ease !important;
+    z-index: 10 !important;
+    width: 60px !important;
+    height: 100% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
   /* Positioning within the PDF modal container */
   .pdf-left-arrow {
-    left: 10px; /* adjust based on your modal layout */
+    left: 0 !important;
   }
   
   .pdf-right-arrow {
-    right: 10px; /* adjust based on your modal layout */
+    right: 0 !important;
   }
   
   /* Hover/focus effect for PDF modal arrows */
   .pdf-nav-arrow:hover,
   .pdf-nav-arrow:focus,
   .pdf-nav-arrow:active {
-    transform: translateY(-50%) scale(1.1);
-    color: #ddd;
+    opacity: 1 !important;
+    color: #39a1dd !important;
+  }
+
+  /* Book-like page flipping animation */
+  @keyframes pageFlipRight {
+    0% {
+      transform: rotateY(0deg);
+      transform-origin: left;
+      z-index: 1;
+    }
+    100% {
+      transform: rotateY(-180deg);
+      transform-origin: left;
+      z-index: 0;
+    }
   }
   
-    
+  @keyframes pageFlipLeft {
+    0% {
+      transform: rotateY(-180deg);
+      transform-origin: left;
+      z-index: 0;
+    }
+    100% {
+      transform: rotateY(0deg);
+      transform-origin: left;
+      z-index: 1;
+    }
+  }
+  
+  /* Enhanced PDF container styling */
+  .pdf-container {
+    perspective: 1500px;
+    position: relative;
+  }
+  
+  .flipping .pdf-pages {
+    position: relative;
+    transform-style: preserve-3d;
+  }
+  
+  .flipping.next-page .pdf-pages {
+    animation: pageFlipRight 0.6s ease-in-out forwards;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  .flipping.prev-page .pdf-pages {
+    animation: pageFlipLeft 0.6s ease-in-out forwards;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  }
+  
+  /* PDF document styling with book binding effect */
+  .pdf-pages {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px; /* Add gap between pages */
+    padding: 10px; /* Add padding around pages */
+    background: linear-gradient(to right, white 0%, #f0f0f0 49%, #999 50%, #f0f0f0 51%, white 100%); /* Simulate book binding */
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+  }
+  
+  /* Individual PDF page styling */
+  .pdf-pages .react-pdf__Page {
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: white;
+  }
+  
+  /* Book binding effect */
+  .pdf-pages::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.2), rgba(0,0,0,0.1));
+    transform: translateX(-50%);
+    z-index: 5;
+  }
+  
     /* Center the page number */
     .page-number {
       text-align: center;

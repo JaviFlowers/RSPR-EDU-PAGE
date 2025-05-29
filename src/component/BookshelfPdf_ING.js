@@ -32,7 +32,7 @@ import BrochureTerremotosCover from './Recursos_Educativos/Brochure_Terremotos_E
 import Tercera from './Recursos_Educativos/Elderly.png'
 import BioLinkCover from './Recursos_Educativos/BioLink_ESPA.png';
 import LibritoCover from './Recursos_Educativos/LibritoEsp.png';
-
+import LandslideCover from './Recursos_Educativos/LandslideCover.png';
 
 
 // Import your video thumbnails
@@ -57,7 +57,7 @@ import Envejecientes from './Recursos_Educativos/Brochure_Elderly.pdf';
 import BrochureTerremotos from './Recursos_Educativos/Brochure_Earthquake.pdf';
 import Librito from './Recursos_Educativos/Librito_ingles.pdf';
 import turs_terrem from './Recursos_Educativos/tur_terremINGL.pdf';
-
+import LandslideGuide from './Recursos_Educativos/LandslideGuide_2020.pdf';
 //Data has to link to ../spanish/educacion/documentos/Curriculos/(*pdf name*)
 
 
@@ -88,7 +88,8 @@ const TsunamiBooks = [
     { id: 6, title: 'General Earthquake Brochure', cover: BrochureTerremotosCover, content: BrochureTerremotos, description: '' },
     { id: 7, title: 'Preparedness for Senior Citizens and People with Disabilities', cover: Tercera, content: Envejecientes, description: '' },
     { id: 8, title: 'BioLink', cover: BioLinkCover, content: BioLink, description: '', audio: BioLinkAudio },
-    { id: 9, title: 'Educate and Prepare: Earthquakes and Tsunamis', cover: LibritoCover, content: Librito, description: 'Educational booklet on preparedness for earthquakes and tsunamis.' }
+    { id: 9, title: 'Educate and Prepare: Earthquakes and Tsunamis', cover: LibritoCover, content: Librito, description: 'Educational booklet on preparedness for earthquakes and tsunamis.' },
+    { id: 10, title: 'Landslide Guide', cover: LandslideCover, content: LandslideGuide, description: 'Educational booklet on preparedness for landslides.' }
 
     // Add more book objects here
   ];
